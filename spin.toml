@@ -1,0 +1,18 @@
+spin_manifest_version = 2
+
+[application]
+authors = ["Siva <byteshiva@gmail.com>"]
+description = ""
+name = "hello-k3s"
+version = "0.1.0"
+
+[[trigger.http]]
+route = "/..."
+component = "hello-k3s"
+
+[component.hello-k3s]
+source = "target/hello-k3s.wasm"
+exclude_files = ["**/node_modules"]
+[component.hello-k3s.build]
+command = "npm run build"
+watch = ["src/**/*.js", "package.json"]
